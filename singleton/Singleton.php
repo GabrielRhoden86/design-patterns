@@ -5,7 +5,7 @@ declare(strict_types=1);
 final class Singleton{
 
                  #(?) indica que o tipo da variável é nullable, ou seja, pode receber um valor 
-    private static ?Singleton $instance;
+    private static ?PDO $instance;
 
     private function __construct(){
 
@@ -20,10 +20,9 @@ final class Singleton{
         
     }
 
-    public static function getInstance():Singleton{
-
+    public static function getInstance():PDO{
         if(!isset(self::$instance)){
-       self::$instance = new Singleton();
+       self::$instance = new PDO("mysql:host=localhost;port=3307;dbname=fila-laravel","root", "");
     }
     return self::$instance;
   }
